@@ -1,0 +1,842 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg:           #0e0e0e;
+    --bg-1:         #161616;
+    --bg-2:         #1e1e1e;
+    --bg-3:         #272727;
+    --line:         #2a2a2a;
+    --line-2:       #383838;
+    --line-3:       #505050;
+    --text:         #f0ede8;
+    --text-2:       #a09b94;
+    --text-3:       #5a5550;
+    --acid:         #7e75ff;
+    --acid-bg:      rgba(126,117,255,0.08);
+    --acid-border:  rgba(126,117,255,0.25);
+    --neg:          #ff3d3d;
+    --neg-bg:       rgba(255,61,61,0.07);
+    --neg-border:   rgba(255,61,61,0.18);
+    --pos:          #00e676;
+    --pos-bg:       rgba(0,230,118,0.07);
+    --pos-border:   rgba(0,230,118,0.15);
+    --r:            0px;
+}
+
+/* ── Reset Bootstrap ── */
+.bg-light { background: none !important; }
+.shadow   { box-shadow: none !important; }
+
+body {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+    background: var(--bg) !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding: 0 !important;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+
+.navbar > .container {
+    padding: 0 !important;
+    height: 52px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--text) !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 0 0;
+    border-right: 1px solid var(--line);
+}
+
+.navbar-brand::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 100%;
+    background: var(--acid);
+    flex-shrink: 0;
+    margin-right: 16px;
+}
+
+/* ── Container ── */
+.container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* ── Card ── */
+.card {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    animation: appear 0.3s ease both;
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.card-header {
+    background: var(--bg) !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 0;
+    flex-wrap: wrap;
+    min-height: 56px;
+}
+
+.card-header h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-right: 1px solid var(--line);
+    gap: 14px;
+}
+
+.card-header h2::after {
+    content: attr(data-count);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--text-3);
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+/* ── Barra de busca ── */
+.search-bar {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.search-wrap {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.search-wrap::before {
+    content: '/';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--acid);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.search-wrap input {
+    padding-left: 32px !important;
+    width: 220px;
+}
+
+/* ── Tabela ── */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text);
+    margin: 0 !important;
+}
+
+.table > :not(caption) > * > * {
+    background-color: transparent !important;
+    border-bottom-color: var(--line) !important;
+    color: var(--text) !important;
+    box-shadow: none !important;
+}
+
+.table thead tr {
+    border-bottom: 1px solid var(--line-2) !important;
+}
+
+.table thead th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-3) !important;
+    padding: 14px 20px !important;
+    background: transparent !important;
+    border: none !important;
+    border-right: 1px solid var(--line) !important;
+    white-space: nowrap;
+}
+
+.table thead th:last-child { border-right: none !important; }
+.table thead th:first-child { padding-left: 24px !important; }
+
+.table tbody tr {
+    border-bottom: 1px solid var(--line) !important;
+    transition: background 0.1s;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none !important;
+}
+
+.table tbody tr:hover {
+    background: var(--bg-2) !important;
+}
+
+.table tbody td {
+    padding: 15px 20px !important;
+    vertical-align: middle !important;
+    border: none !important;
+    border-right: 1px solid var(--line) !important;
+    background: transparent !important;
+    font-size: 13px;
+    font-weight: 300;
+    position: relative;
+}
+
+.table tbody td:last-child { border-right: none !important; }
+.table tbody td:first-child { padding-left: 24px !important; }
+
+/* Acento esquerdo no hover */
+.table tbody tr td:first-child {
+    border-left: 2px solid transparent;
+    transition: border-color 0.1s;
+    padding-left: 22px !important;
+}
+.table tbody tr:hover td:first-child {
+    border-left-color: var(--acid);
+}
+
+/* Nome produto */
+.product-name {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 13px;
+}
+
+/* Badge de preço */
+.product-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--pos);
+    background: var(--pos-bg);
+    border: 1px solid var(--pos-border);
+    padding: 3px 8px;
+    border-radius: 0;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+/* Ações */
+.action-group {
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+/* Estado vazio */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.empty-state .empty-icon {
+    font-size: 24px;
+    margin-bottom: 16px;
+    opacity: 0.15;
+    display: block;
+    filter: grayscale(1);
+}
+
+.empty-state p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── Botões ── */
+.btn {
+    font-family: 'Archivo', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn:active { opacity: 0.75; }
+
+.btn-success {
+    --bs-btn-bg: var(--acid);
+    --bs-btn-border-color: var(--acid);
+
+    --bs-btn-hover-bg: #918aff;
+    --bs-btn-hover-border-color: #918aff;
+
+    --bs-btn-active-bg: #5f57d6;
+    --bs-btn-active-border-color: #5f57d6;
+
+    --bs-btn-focus-shadow-rgb: 126,117,255;
+
+    background: var(--acid);
+    border-color: var(--acid);
+    color: var(--bg);
+}
+.btn-success {
+    background: var(--acid);
+    color: var(--bg);
+    border-color: var(--acid);
+}
+
+.btn-success:hover {
+    background: #918aff;
+    border-color: #918aff;
+}
+
+.nav-links {
+    margin-left: 24px;
+    height: 100%;
+}
+
+.nav-link-custom {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-2);
+    text-decoration: none;
+    border-right: 1px solid var(--line);
+    transition: color 0.1s, background 0.1s;
+}
+
+.user-welcome {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.3px;
+}
+
+.user-welcome strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.nav-link-custom:hover {
+    color: var(--text);
+    background: var(--bg-2);
+}
+
+.btn-success:active,
+.btn-success:focus,
+.btn-success:focus-visible {
+    background: #5f57d6;
+    border-color: #5f57d6;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: transparent;
+    color: var(--text-2);
+    border-color: var(--line-2);
+}
+.btn-primary:hover {
+    background: var(--bg-2);
+    border-color: var(--line-3);
+    color: var(--text);
+}
+
+.btn-warning {
+    background: transparent;
+    color: var(--text-3);
+    border-color: var(--line);
+}
+.btn-warning:hover {
+    color: var(--acid);
+    border-color: var(--acid-border);
+    background: var(--acid-bg);
+}
+
+.btn-danger {
+    background: transparent;
+    color: var(--text-3);
+    border-color: var(--line);
+}
+.btn-danger:hover {
+    color: var(--neg);
+    border-color: var(--neg-border);
+    background: var(--neg-bg);
+}
+
+.produto-caro {
+    color: var(--neg) !important;
+}
+
+.product-price-danger {
+    color: var(--neg) !important;
+    background: var(--neg-bg) !important;
+    border-color: var(--neg-border) !important;
+}
+
+.data-cadastro {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-3);
+    letter-spacing: 0.3px;
+}
+
+.btn-secondary {
+    background: var(--bg-2);
+    color: var(--text-2);
+    border-color: var(--line);
+}
+.btn-secondary:hover {
+    background: var(--bg-3);
+    border-color: var(--line-2);
+    color: var(--text);
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    color: var(--text-3);
+    border-color: var(--line);
+}
+.btn-outline-secondary:hover {
+    background: var(--bg-2);
+    border-color: var(--line-2);
+    color: var(--text);
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* ── Formulário ── */
+.card.mx-auto {
+    max-width: 480px;
+}
+
+.form-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 0;
+    color: var(--text);
+    padding: 12px 14px;
+    font-size: 13px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    transition: border-color 0.1s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-control:focus {
+    background: var(--bg);
+    border-color: var(--acid);
+    outline: none;
+    box-shadow: none;
+    color: var(--text);
+}
+
+.form-control::placeholder {
+    color: var(--text-3);
+    font-size: 12px;
+}
+
+.form-control.is-invalid {
+    border-color: var(--neg);
+}
+
+.form-control.is-invalid:focus {
+    border-color: var(--neg);
+    box-shadow: none;
+}
+
+/* ── Feedback de erro inline ── */
+.invalid-feedback {
+    color: var(--neg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.invalid-feedback::before {
+    content: '!';
+    width: 14px;
+    height: 14px;
+    background: var(--neg);
+    color: var(--bg);
+    font-size: 10px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* ── Alerta de erro ── */
+.alert-erro {
+    background: var(--neg-bg);
+    border: 1px solid var(--neg-border);
+    border-left: 3px solid var(--neg);
+    color: var(--neg);
+    border-radius: 0;
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+    animation: slideIn 0.2s ease both;
+}
+
+.alert-erro::before {
+    content: '!!';
+    font-weight: 500;
+    flex-shrink: 0;
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Modal ── */
+.modal-content {
+    background: var(--bg-1);
+    border: 1px solid var(--line-2);
+    border-radius: 0;
+    color: var(--text);
+    box-shadow: 0 0 0 1px var(--line), 0 40px 100px rgba(0,0,0,0.9);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--line) !important;
+    padding: 0 !important;
+    background: var(--bg) !important;
+    display: flex !important;
+    align-items: stretch !important;
+}
+
+.modal-header::before {
+    content: '';
+    width: 3px;
+    background: var(--neg);
+    flex-shrink: 0;
+    display: block;
+}
+
+.modal-header .modal-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--neg);
+    padding: 18px 20px;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 28px 24px !important;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-2);
+    line-height: 1.8;
+}
+
+.modal-body strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--line) !important;
+    padding: 16px 24px !important;
+    gap: 8px;
+    background: var(--bg) !important;
+}
+
+.btn-close {
+    filter: invert(1) opacity(0.2);
+    transition: filter 0.1s;
+    border-radius: 0 !important;
+}
+.btn-close:hover {
+    filter: invert(1) opacity(0.7);
+}
+
+/* ── Animação das linhas ── */
+.table tbody tr {
+    animation: rowIn 0.25s ease both;
+}
+
+.table tbody tr:nth-child(1)  { animation-delay: 0.02s; }
+.table tbody tr:nth-child(2)  { animation-delay: 0.05s; }
+.table tbody tr:nth-child(3)  { animation-delay: 0.08s; }
+.table tbody tr:nth-child(4)  { animation-delay: 0.11s; }
+.table tbody tr:nth-child(5)  { animation-delay: 0.14s; }
+.table tbody tr:nth-child(n+6){ animation-delay: 0.17s; }
+
+@keyframes rowIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+    .container { padding: 16px 12px; }
+
+    .card-header {
+        padding: 0 !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .card-header h2 {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        min-height: 44px;
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .search-wrap { width: 100%; }
+    .search-wrap input { width: 100% !important; }
+
+    .table thead { display: none; }
+
+    .table tbody tr {
+        display: block;
+        border: none !important;
+        border-bottom: 1px solid var(--line) !important;
+        padding: 14px 16px;
+        animation: none;
+    }
+
+    .table tbody tr:hover td:first-child {
+        border-left-color: transparent;
+    }
+
+    .table tbody td {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0 !important;
+        border: none !important;
+        border-bottom: 1px solid var(--line) !important;
+        font-size: 12px;
+    }
+
+    .table tbody td:last-child {
+        border-bottom: none !important;
+        padding-top: 10px !important;
+    }
+
+    .table tbody td::before {
+        content: attr(data-label);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-3);
+    }
+
+    .action-group { justify-content: flex-end; }
+    .card.mx-auto { max-width: 100%; }
+}
+
+/* ── Login ── */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            var(--line) 39px,
+            var(--line) 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 39px,
+            var(--line) 39px,
+            var(--line) 40px
+        );
+    background-size: 40px 40px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    color: var(--text-3);
+    margin: 6px 0 0;
+    font-weight: 300;
+}
+
+/* ── Alerta de sucesso ── */
+.alert-sucesso {
+    background: var(--pos-bg);
+    border: 1px solid var(--pos-border);
+    border-left: 3px solid var(--pos);
+    color: var(--pos);
+    border-radius: 0;
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-sucesso::before {
+    content: 'OK';
+    font-weight: 500;
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+.form-select {
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 0;
+    color: var(--text);
+    padding: 12px 14px;
+    font-size: 13px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    transition: border-color 0.1s;
+}
+
+.form-select:focus {
+    background: var(--bg);
+    border-color: var(--acid);
+    outline: none;
+    box-shadow: none;
+    color: var(--text);
+}
+
+.form-select.is-invalid {
+    border-color: var(--neg);
+}
+
+.dashboard-kpi {
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+}
+
+.dashboard-kpi-label {
+    color: var(--text-2);
+    margin-bottom: 6px;
+}
+
+.dashboard-kpi-value {
+    margin: 0;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
+}
